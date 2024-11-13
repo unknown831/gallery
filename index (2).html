@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <!-- Add jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Basic styling for the gallery */
+        .main-display {
+            width: 100%;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+        }
+        
+        .main-display img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 8px;
+            transition: transform 0.5s, opacity 0.5s;
+            opacity: 1;
+        }
+
+        .thumbnail-gallery {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .thumbnail-gallery img {
+            width: 100px; /* Thumbnail size */
+            height: 100px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .thumbnail-gallery img:hover {
+            transform: scale(1.1); /* Slight zoom on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Gallery</h1>
+    
+    
+    <div class="main-display">
+        <img src="https://pic.surf/d98" alt="Main Display" id="main-image">
+    </div>
+
+   
+    <div class="thumbnail-gallery">
+        <img src="https://pic.surf/d98" alt="Thumbnail 1" class="thumbnail">
+        <img src="https://pic.surf/h27" alt="Thumbnail 2" class="thumbnail">
+        <img src="https://pic.surf/4n0" alt="Thumbnail 3" class="thumbnail">
+        <img src="https://pic.surf/j23" alt="Thumbnail 4" class="thumbnail">
+        <img src="https://pic.surf/0y" alt="Thumbnail 5" class="thumbnail">
+        
+    </div>
+
+    <script>
+        $(document).ready(function() {
+           
+            $('.thumbnail').click(function() {
+                let newSrc = $(this).attr('src'); 
+
+                
+                $('#main-image').slideToggle(300, function() {
+                    $(this).attr('src', newSrc).slideToggle(300);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
